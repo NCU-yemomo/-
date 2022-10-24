@@ -74,11 +74,13 @@ func postValue(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
 		"msg": "加入成功",
 	})
+	log.Print(productsList)
+	log.Print(purchaseList)
 
 }
 func postValuePur(ctx *gin.Context) {
-	var purchase Purchase
-	err := ctx.BindJSON(&purchase)
+	var purchases Purchase
+	err := ctx.BindJSON(&purchases)
 	if err != nil {
 		ctx.JSON(400, gin.H{
 			"msg": "传入失败",
@@ -88,14 +90,14 @@ func postValuePur(ctx *gin.Context) {
 		return
 	}
 	//不必检测，一般情况下商品那不重复，这里不可能重复
-	purchaseList[purchase.Name] = purchase
+	purchaseList[purchases.Name] = purchases
 	ctx.JSON(200, gin.H{
 		"msg": "加入成功",
 	})
 }
 func deleteValue(ctx *gin.Context) {
 	var name = ctx.Query("name")
-	_, ok := purchaseList[name]
+	_, ok := productsList[name]
 	if !ok {
 		ctx.JSON(400, gin.H{
 			"msg": "输入的商品不存在",
@@ -103,7 +105,11 @@ func deleteValue(ctx *gin.Context) {
 		log.Print("输入不存在")
 		return
 	}
-	delete(purchaseList, name)
+	log.Print(name)
+	log.Print(productsList)
+	log.Print(purchaseList)
+	delete(productsList, name)
+
 	ctx.JSON(200, gin.H{
 		"msg": "删除成功",
 	})
@@ -119,7 +125,7 @@ func deleteValuePur(ctx *gin.Context) {
 		log.Print("输入不存在")
 		return
 	}
-	delete(productsList, name)
+	delete(purchaseList, name)
 	ctx.JSON(200, gin.H{
 		"msg": "删除成功",
 	})

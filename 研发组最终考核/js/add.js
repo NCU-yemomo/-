@@ -10,6 +10,9 @@ function purchase(id){
     let price=document.getElementById("price"+num)
     let buttonDelete=document.getElementById("button"+num)
     addPur(input.value,price.innerHTML)
+    console.log(input.value)
+    purPost(input.value,price.innerHTML)
+    console.log(input.value)
     addDelete(input.value)
     input.remove()
     price.remove()
@@ -70,7 +73,6 @@ function add(valueName,valuePrice){
     priceBox.append(newPrice)
     buttonBox.append(newButton)
     //进行post请求
-    addPost(valueName,valuePrice)
     console.log(`add i=${i},k=${k}`)
 }
 function addPur(input,input2){
@@ -112,6 +114,7 @@ function deletePur(id){
     //对此进行添加
     add(namePur.innerHTML,pricePur.innerHTML)
     //移除
+    console.log(namePur.innerHTML)
     purDelete(namePur.innerHTML)
     namePur.remove()
     pricePur.remove()
