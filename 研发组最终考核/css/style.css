@@ -1,0 +1,236 @@
+/**设置body格式*/
+html,body{
+    height:100%;
+    overflow: hidden;
+    margin:0;
+    background:linear-gradient(to right,lightblue,cornsilk);
+}
+/**防止用户选中影响体验*/
+p{
+    user-select: none;
+}
+/**设置bodyflex来保持自动居中，其实后面的可以去掉，flex主要是把里面的*/
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    gap:5px;
+}
+/**设置盒子模型*/
+/*奠定整个盒子基础*/
+.container{
+    margin:auto auto;
+    width:500px;
+    height:700px;
+    border:1px solid black;
+    box-shadow:3px 3px 4px rgba(0,0,0,0.1);
+    opacity:0.75;
+    display: flex;
+    flex-direction: column;
+    padding-left:20px;
+    background-color: white;
+}
+/**添加商品输入框盒子*/
+.add-box{
+    margin-top: 10px;
+    display:flex;
+    flex-direction: row;
+    height:30px;
+}
+.add-box > .productName{
+    width: 240px;
+    padding:5px;
+}
+.add-box> .priceName{
+    width:90px;
+    padding:5px;
+}
+.add-box> .addButton{
+    width:auto;
+    display: block;
+    background-color:lightblue;/**173,216,230*/
+    border:none;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+}
+.add-box >input{
+    margin-right:20px;
+}
+.container > .name{
+    padding:0px;
+}
+/**三列布局 - 姓名盒子，价格盒子 按钮盒子 flex弹性布局 购物车*/
+.product-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:auto;
+    margin-right:20px;
+    height:200px;
+    border:1px solid black;
+    box-shadow:3px 3px 4px rgba(0,0, 0, 0.1);
+    overflow-y:scroll ;
+}
+.product-box > .name-box{
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    width:150px;
+}
+.product-box > .price-box{
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    width:150px;
+}
+.product-box > .name-box > input{
+    height:16px;
+    text-align: center;
+    margin:5px;
+    font-size: 14px;
+    background: transparent;
+    outline:none;
+    border:none;
+}
+
+.product-box > .price-box > p{
+    height:16px;
+    padding:1px;
+    font-size: 14px;
+    text-align: center;
+    margin:5px;
+}
+.product-box > .button-box {
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    width:150px;
+}
+.product-box > .button-box >p {
+    height:16px;
+    text-align: center;
+    margin:5px;
+}
+#name1{
+    display:none;
+}
+#price1{
+    display: none;
+}
+#button1{
+    display: none;
+}
+.product-box >.button-box >  .button > img{
+    height:16px;
+    display: inline-block;
+}
+.product-box >.button-box >  .button > input{
+    margin:3px;
+    width:1fr;
+    background-color:lightblue;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+}
+/**已购买**/
+.purchase-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:auto;
+    margin-right:20px;
+    height:200px;
+    border:1px solid black;
+    box-shadow:3px 3px 4px rgba(0,0, 0, 0.1);
+    overflow-y:scroll ;
+}
+.purchase-box > .name-box{
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    width:150px;
+}
+.purchase-box > .price-box{
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    width:150px;
+}
+.purchase-box > .name-box > p{
+    height:16px;
+    text-align: center;
+    margin:5px;
+}
+.purchase-box > .price-box > p{
+    height:16px;
+    text-align: center;
+    margin:5px;
+}
+.purchase-box >.button-box{
+    display: flex;
+    flex-direction: column;
+    height:200px;
+    width:150px;
+
+}
+.purchase-box >.button-box> .button{
+    margin-top:5px;
+    margin-right:30px;
+    width:auto;
+    display:flex;
+    justify-content: flex-end;
+}
+#namePur1{
+    display: none;
+}
+#pricePur1{
+    display: none;
+}
+#buttonPur1{
+    display:none;
+}
+
+.purchase-box >.button-box> .button > img{
+    height:20px;
+    display: inline-block;
+}
+button :hover{
+    background-color:rgba(173,216,210,0.7)
+}
+.add-box{
+    position:relative;
+}
+/*动态输入框*/
+.textname{
+    position:absolute;
+    left:5px;
+    top: -9px;
+    font-size: 14px;
+    background:white;
+    color:#1E90FF;
+    transition :transform 0.1s ease-in;
+}
+.textprice{
+    position: absolute;
+    top:-9px;
+    left:280px;
+    font-size: 14px;
+    color:#1E90FF;
+    background:white;
+    transition:transform 0.1s ease-in
+}
+.productName:hover ~ .textname,
+.productName:valid ~ .textname,
+.productName:focus ~ .textname
+{
+    transform: translateX(-12px) scale(0.75) translateY(-14px) ;
+}
+.priceName:hover ~ .textprice,
+.priceName:valid ~ .textprice,
+.priceName:focus ~ .textprice
+{
+    transform: translateX(-5px) scale(0.75) translateY(-14px) ;
+}
+input:focus{
+    border:  1px solid #1E90FF;
+}
+input:focus{
+    border:  1px solid #1E90FF;
+}

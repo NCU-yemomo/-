@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品界面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/Getall.js"></script>
+    <script src="js/add.js"></script>
+    <script src="js/text.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--商品价格盒子-->
+        <div class="add-box">
+            <input type="text" id="name" class="productName" required="required">
+            <p class="textname">请输入商品名称</p>
+            <!--动态商品名称-->
+            <input type="text" id="price" class="priceName" required="required">
+            <p class="textprice">输入价格</p>
+            <!--动态价格-->
+            <input type="button" value="添加商品" class="addButton" onclick="addToPurchase()">
+        </div>
+        <p class="name">商品名称</p>
+        <!--购物车盒子-->
+        <div class="product-box">
+            <!--商品姓名盒子-->
+            <div class="name-box" id="name-box">
+                <input type="text" value="商品" id="nameAll">
+                <input type="text" value="苹果" id="name1">
+            </div>
+            <!--商品价格盒子-->
+            <div class="price-box" id="price-box">
+                <p id="priceAll">价格</p>
+                <p id="price1">15</p>
+            </div>
+            <!--商品互动按钮盒子-->
+            <div class="button-box" id="button-box">
+                <p></p>
+                <div class="button" id="button1">
+                    <input type="button" value="修改名称" onclick="change(id)" id="change1">
+                    <input type="button" value="购买" onclick="purchase(id)" id="purchase1">
+                    <img src="img/删除_delete.png" onclick="deleteFunc(id)" id="delete1">
+                </div>
+            </div>
+        </div>
+        <p class="name">已购买商品</p>
+        <!--已购买盒子-->
+        <div class="purchase-box">
+            <!--商品姓名盒子-->
+            <div class="name-box" id="name-boxPur">
+                <p id="namePur1">苹果</p>
+            </div>
+            <!--商品价格盒子-->
+            <div class="price-box" id="price-boxPur">
+                <p id="pricePur1">15</p>
+            </div>
+            <!--商品删除按钮盒子-->
+            <div class="button-box" id="button-boxPur">
+                <!--删除盒子序号-->
+                <div class="button" id="buttonPur1">
+                    <img src="img/删除_delete.png" id="deletePur1" onclick="deletePur(id)">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
